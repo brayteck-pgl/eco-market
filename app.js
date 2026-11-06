@@ -9,12 +9,17 @@ const productSearch = document.querySelector("#product-search");
 const categoryFilter = document.querySelector("#category-filter");
 const cityFilter = document.querySelector("#city-filter");
 const statusFilter = document.querySelector("#status-filter");
+const productTableBody = document.querySelector("#product-table-body");
+const dashboardSidebar = document.querySelector("#dashboard-sidebar");
+const dashboardMenuToggle = document.querySelector("#dashboard-menu-toggle");
+const dashboardMobileBackdrop = document.querySelector("#dashboard-mobile-backdrop");
 const productDialog = document.querySelector("#product-dialog");
 const productForm = document.querySelector("#product-form");
 const productFormError = document.querySelector("#product-form-error");
 
 let productos = [];
 let catalogoListo = false;
+const desktopDashboard = window.matchMedia("(min-width: 64rem)");
 
 const currencyFormatter = new Intl.NumberFormat("es-CO", {
   style: "currency",
@@ -23,6 +28,11 @@ const currencyFormatter = new Intl.NumberFormat("es-CO", {
 });
 
 const numberFormatter = new Intl.NumberFormat("es-CO");
+const badgeClasses = {
+  Disponible: "status-available",
+  "Stock bajo": "status-low",
+  Agotado: "status-out",
+};
 
 function obtenerEstado(producto) {
   if (producto.stock === 0) {
@@ -80,16 +90,25 @@ function renderizarKpis() {
     currencyFormatter.format(valorInventario);
 }
 
+function establecerMenuMovilAbierto(abierto) {
+  const menuAbierto = abierto && !desktopDashboard.matches;
+
+  dashboardSidebar.classList.toggle("is-open", menuAbierto);
+  dashboardMobileBackdrop.hidden = !menuAbierto;
+  dashboardMenuToggle.setAttribute("aria-expanded", String(menuAbierto));
+  dashboardMenuToggle.setAttribute(
+    "aria-label",
+    menuAbierto ? "Cerrar menú" : "Abrir menú",
+  );
+  dashboardMenuToggle.querySelector("span").textContent = menuAbierto ? "×" : "☰";
+  document.body.classList.toggle("dashboard-menu-open", menuAbierto);
+}
+
 function crearProductCard(producto) {
   const card = crearElemento("article", "product-card catalog-product-card");
   const details = crearElemento("div", "product-details");
   const heading = crearElemento("div", "catalog-card-heading");
   const title = crearElemento("h3", "", producto.nombre);
-  const badgeClasses = {
-    Disponible: "status-available",
-    "Stock bajo": "status-low",
-    Agotado: "status-out",
-  };
   const state = obtenerEstado(producto);
   const badge = crearElemento(
     "span",
@@ -111,7 +130,19 @@ function crearProductCard(producto) {
   );
   const organic = crearProductFact("Orgánico", producto.organico ? "Sí" : "No");
   const active = crearProductFact("Catálogo", producto.activo ? "Activo" : "Inactivo");
-  const actions = crearElemento("div", "catalog-card-actions");
+  const actions = crearBotonesAccion(producto);
+
+  heading.append(title, badge);
+  details.append(heading, category, price);
+  facts.append(producer, city, stock, organic, active);
+  actions.className = "catalog-card-actions";
+  card.append(details, facts, actions);
+
+  return card;
+}
+
+function crearBotonesAccion(producto) {
+  const actions = crearElemento("div", "row-actions");
   const editButton = crearElemento("button", "row-action row-action-edit", "Editar");
   const deleteButton = crearElemento(
     "button",
@@ -119,9 +150,6 @@ function crearProductCard(producto) {
     "Eliminar",
   );
 
-  heading.append(title, badge);
-  details.append(heading, category, price);
-  facts.append(producer, city, stock, organic, active);
   editButton.type = "button";
   editButton.dataset.action = "edit";
   editButton.dataset.productId = String(producto.id);
@@ -131,9 +159,37 @@ function crearProductCard(producto) {
   deleteButton.dataset.productId = String(producto.id);
   deleteButton.setAttribute("aria-label", `Eliminar ${producto.nombre}`);
   actions.append(editButton, deleteButton);
-  card.append(details, facts, actions);
 
-  return card;
+  return actions;
+}
+
+function crearFilaProducto(producto) {
+  const row = document.createElement("tr");
+  const code = crearElemento("th", "", `ECO${String(producto.id).padStart(3, "0")}`);
+  const state = obtenerEstado(producto);
+  const badge = crearElemento(
+    "span",
+    `status-badge ${badgeClasses[state]}`,
+    state,
+  );
+  const stateCell = document.createElement("td");
+  const actionsCell = document.createElement("td");
+
+  code.scope = "row";
+  stateCell.append(badge);
+  actionsCell.append(crearBotonesAccion(producto));
+  row.append(
+    code,
+    crearElemento("td", "", producto.nombre),
+    crearElemento("td", "", producto.categoria),
+    crearElemento("td", "", currencyFormatter.format(producto.precio)),
+    crearElemento("td", "", numberFormatter.format(producto.stock)),
+    crearElemento("td", "", producto.productor),
+    stateCell,
+    actionsCell,
+  );
+
+  return row;
 }
 
 function crearProductFact(label, value) {
@@ -167,19 +223,23 @@ function obtenerProductosFiltrados() {
 
 function renderizarProductos() {
   productGrid.replaceChildren();
+  productTableBody.replaceChildren();
 
   if (!catalogoListo) {
     productGrid.setAttribute("aria-busy", "true");
+    productTableBody.setAttribute("aria-busy", "true");
     catalogEmpty.hidden = true;
     productCountLabel.textContent = "No se pudo cargar el catálogo.";
     return;
   }
 
   productGrid.setAttribute("aria-busy", "false");
+  productTableBody.setAttribute("aria-busy", "false");
   const filtrados = obtenerProductosFiltrados();
 
   filtrados.forEach((producto) => {
     productGrid.append(crearProductCard(producto));
+    productTableBody.append(crearFilaProducto(producto));
   });
 
   productCountLabel.textContent =
@@ -415,7 +475,7 @@ document.querySelector("#cancel-product-dialog").addEventListener("click", () =>
   productDialog.close();
 });
 
-productGrid.addEventListener("click", (event) => {
+function manejarAccionProducto(event) {
   const button = event.target.closest("button[data-action]");
 
   if (!button) {
@@ -442,7 +502,32 @@ productGrid.addEventListener("click", (event) => {
   ) {
     confirmarCambios(productos.filter((item) => item.id !== producto.id));
   }
+}
+
+productGrid.addEventListener("click", manejarAccionProducto);
+productTableBody.addEventListener("click", manejarAccionProducto);
+
+dashboardMenuToggle.addEventListener("click", () => {
+  establecerMenuMovilAbierto(
+    dashboardMenuToggle.getAttribute("aria-expanded") !== "true",
+  );
 });
+
+dashboardMobileBackdrop.addEventListener("click", () => {
+  establecerMenuMovilAbierto(false);
+});
+
+dashboardSidebar.querySelectorAll(".dashboard-nav-link").forEach((link) => {
+  link.addEventListener("click", () => establecerMenuMovilAbierto(false));
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    establecerMenuMovilAbierto(false);
+  }
+});
+
+desktopDashboard.addEventListener("change", () => establecerMenuMovilAbierto(false));
 
 productForm.addEventListener("submit", (event) => {
   event.preventDefault();

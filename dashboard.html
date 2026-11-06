@@ -8,29 +8,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20261106">
   </head>
   <body class="dashboard-body">
     <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
 
     <div class="dashboard-layout">
-      <aside class="dashboard-sidebar" aria-label="Panel de administración">
+      <button class="dashboard-mobile-backdrop" id="dashboard-mobile-backdrop" type="button" aria-label="Cerrar menú" hidden></button>
+      <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Panel de administración">
         <a class="brand dashboard-brand" href="index.html" aria-label="EcoMarket, ir a la landing">
           <span class="brand-mark" aria-hidden="true">e</span>
           <span>eco<span class="brand-light">market</span></span>
         </a>
 
-        <details class="dashboard-mobile-nav">
-          <summary>Menú de administración</summary>
-          <nav class="dashboard-nav" aria-label="Navegación del panel">
-            <a class="dashboard-nav-link is-current" href="#resumen"><span aria-hidden="true">⌂</span> Resumen</a>
-            <a class="dashboard-nav-link" href="#inventario"><span aria-hidden="true">▦</span> Inventario</a>
-            <a class="dashboard-nav-link" href="#categorias"><span aria-hidden="true">◈</span> Categorías</a>
-            <a class="dashboard-nav-link" href="#reportes"><span aria-hidden="true">▤</span> Reportes</a>
-          </nav>
-        </details>
-
-        <nav class="dashboard-nav dashboard-desktop-nav" aria-label="Navegación del panel">
+        <nav class="dashboard-nav" aria-label="Navegación del panel">
           <a class="dashboard-nav-link is-current" href="#resumen" aria-current="page"><span aria-hidden="true">⌂</span> Resumen</a>
           <a class="dashboard-nav-link" href="#inventario"><span aria-hidden="true">▦</span> Inventario</a>
           <a class="dashboard-nav-link" href="#categorias"><span aria-hidden="true">◈</span> Categorías</a>
@@ -46,6 +37,14 @@
 
       <main class="dashboard-main" id="contenido">
         <header class="dashboard-topbar" id="resumen">
+          <button
+            class="dashboard-menu-toggle"
+            id="dashboard-menu-toggle"
+            type="button"
+            aria-label="Abrir menú"
+            aria-controls="dashboard-sidebar"
+            aria-expanded="false"
+          ><span aria-hidden="true">☰</span></button>
           <div>
             <p class="eyebrow">Panel de administración</p>
             <h1>¡Hola! <em>Bienvenido.</em></h1>
@@ -140,6 +139,29 @@
             </div>
             <button class="button button-small button-filter-reset" id="clear-filters-button" type="button">Limpiar filtros</button>
           </div>
+          <div class="catalog-table-heading">
+            <h3>Inventario en tabla</h3>
+            <p>Consulta los datos y administra cada producto desde esta vista.</p>
+          </div>
+          <div class="table-scroll catalog-table-scroll">
+            <table class="inventory-table catalog-table" aria-label="Inventario de productos">
+              <thead>
+                <tr>
+                  <th scope="col">Código</th>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Precio COP</th>
+                  <th scope="col">Stock</th>
+                  <th scope="col">Productor</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="product-table-body" aria-live="polite" aria-busy="true"></tbody>
+            </table>
+          </div>
+          <p class="table-note">En pantallas pequeñas, desliza la tabla horizontalmente para consultar todas las columnas.</p>
+          <h3 class="catalog-cards-heading">Tarjetas de productos</h3>
           <div class="product-grid catalog-grid" id="product-grid" aria-live="polite" aria-busy="true"></div>
           <p class="catalog-empty" id="catalog-empty" hidden></p>
         </section>

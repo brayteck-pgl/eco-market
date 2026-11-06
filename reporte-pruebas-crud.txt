@@ -1,0 +1,42 @@
+REPORTE DE PRUEBAS FUNCIONALES - ECOMARKET
+Fecha: 2026-11-06
+Entorno: dashboard.html en servidor local, navegador integrado, viewport movil y desktop.
+
+Resultado: APROBADO
+
+Pruebas ejecutadas:
+1. Carga inicial: 35 filas en la tabla y 35 tarjetas.
+2. Validacion del formulario: el formulario vacio no permite crear el producto.
+3. Crear: se registro un producto temporal y tabla/tarjetas pasaron a 36.
+4. KPI al crear:
+   - Productos activos: 35 -> 36.
+   - Inventario bajo: 14 -> 15 al crear con stock 0.
+   - Valor del inventario: permanecio en $4.272.000 porque el nuevo producto
+     se creo sin existencias.
+5. Editar: el producto temporal paso de agotado a disponible al cambiar stock
+   de 0 a 10.
+6. KPI al editar:
+   - Productos activos: permanecio en 36.
+   - Inventario bajo: 15 -> 14.
+   - Valor del inventario: $4.272.000 -> $4.292.000.
+7. Busqueda: encontro el producto "Lenteja" por productor "Grano Vivo" y por
+   nombre.
+8. Filtros combinados: busqueda por nombre/productor, categoria Despensa,
+   ciudad Tunja y estado Disponible devolvieron el resultado esperado.
+9. Limpiar filtros: restauro los 36 productos visibles.
+10. Persistencia: el producto agregado/editado permanecio en localStorage
+    despues de recargar la pagina.
+11. Eliminar: se confirmo la eliminacion; tabla y catalogo persistido volvieron
+    a 35 productos.
+12. Persistencia de eliminacion: despues de recargar, el producto temporal
+    siguio eliminado.
+
+Limpieza:
+- Se restauro el valor original de la clave localStorage "ecomarket-productos".
+- Verificacion posterior: 35 filas y 35 tarjetas; no habia clave guardada
+  antes de la prueba.
+
+Nota:
+- La prueba cubrio operaciones CRUD, busqueda, filtros combinados, validacion
+  basica del formulario, KPI y persistencia. No reemplaza pruebas en otros
+  navegadores o dispositivos fisicos.

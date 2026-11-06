@@ -1,0 +1,64 @@
+REVISION DE ENTREGABLES - TALLER ECOMARKET
+Fecha de revision: 2026-11-06
+
+ENTREGABLES DEL PROYECTO
+- index.html: presente.
+- catalogo.html: presente; catálogo conectado a productos.json y al catálogo
+  persistido en localStorage.
+- carrito.html: presente; carrito funcional persistido en localStorage.
+- dashboard.html: presente.
+- styles.css: presente.
+- app.js: presente.
+- productos.json: presente, 35 registros.
+- validarProductos.js: presente; validacion del dataset sin errores.
+- reporte-validacion.txt: presente.
+- reporte-pruebas-crud.txt: presente.
+- reporte-pruebas-integrales.txt: presente.
+
+EVIDENCIAS SOLICITADAS POR EL TALLER
+- evidencias/01-landing-desktop.png
+- evidencias/02-dashboard-desktop.png
+- evidencias/03-dashboard-movil.png
+- evidencias/04-dashboard-filtros.png
+- evidencias/05-dashboard-modal.png
+- Captura del grafico: no aplica por ahora; el grafico es bonus y no esta implementado.
+
+VISTAS DE TIENDA
+- Se añadieron vistas visuales de inicio, catálogo y carrito inspiradas en los
+  wireframes compartidos.
+- Las imágenes del catálogo se asignan por producto y categoría; si falla una
+  imagen remota, se muestra una ilustración de respaldo relacionada.
+- El catálogo permite buscar, filtrar por categoría/precio/disponibilidad,
+  ordenar y agregar productos.
+- El carrito permite cambiar cantidades, quitar productos, ver subtotales,
+  envío y total, y conserva su contenido entre páginas y recargas.
+- El cierre de pedido es una simulación local. No se procesa pago ni se
+  descuenta stock porque no existe backend.
+- El dashboard administrativo conserva sus operaciones CRUD existentes y
+  comparte el catálogo guardado sin compartir la clave del carrito.
+
+DOCUMENTACION DEL PROCESO CON IA
+- El taller solicita un documento breve con prompts utilizados, tecnica aplicada
+  y ajustes realizados a las respuestas de IA.
+- Se creo documentacion-proceso-ia.txt con el proceso verificable de esta sesion,
+  siete prompts reconstruidos como ejemplos metodologicos, las tecnicas
+  propuestas para cada uno, los ajustes efectuados y un borrador de reflexiones.
+- Los prompts son reconstrucciones retrospectivas, no transcripciones literales
+  ni evidencia de que se usaron exactamente asi durante la creacion original.
+
+VERSIONES DEL DATASET
+- No se modifico productos.json durante la validacion; los 35 registros pasaron.
+- Por ello, no se generaron versiones antes/despues de correccion.
+- El reporte de validacion registra las reglas probadas, el resultado y los
+  limites de longitud añadidos al validador.
+
+REPOSITORIO
+- La carpeta de trabajo no contiene metadatos de Git; no se puede comprobar desde
+  aqui si los archivos estan confirmados o publicados en GitHub.
+- Antes de entregar, verificar el repositorio remoto y subir los archivos finales.
+
+PENDIENTES PARA CERRAR LA ENTREGA
+1. Si se recuperan chats anteriores, reemplazar/complementar los ejemplos con
+   los prompts literales y anotar los cambios reales.
+2. Revisar y personalizar las respuestas de reflexion con la experiencia del grupo.
+3. Verificar la version publicada en GitHub.

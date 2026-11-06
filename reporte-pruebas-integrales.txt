@@ -1,0 +1,54 @@
+REPORTE DE PRUEBAS INTEGRALES - ECOMARKET
+Fecha: 2026-11-06
+Entorno: servidor local y navegador integrado.
+
+Resultado de responsive:
+- Landing probada a 320, 375, 390, 768, 1024 y 1440 px.
+- Dashboard probado a 320, 375, 390, 768, 1024, 1100, 1184, 1280 y 1440 px.
+- No hubo desbordamiento horizontal del documento en los anchos probados.
+- El dashboard mostro 35 filas y 35 tarjetas.
+- El boton de menu estuvo visible en anchos moviles/tablet y oculto en desktop.
+
+Hallazgo y correccion:
+- En la primera prueba el dashboard desbordaba horizontalmente a 1024 px porque
+  los filtros intentaban ocupar cinco columnas demasiado anchas para el espacio
+  disponible junto al sidebar.
+- Se ajusto en styles.css el breakpoint de la distribucion en cinco columnas
+  de los filtros de 64rem a 74rem.
+- Repeticion de pruebas: sin desbordamiento entre 320 y 1440 px, incluyendo
+  1024 px. La tabla conserva su desplazamiento horizontal dentro de su contenedor.
+
+Landing:
+- Enlaces internos revisados: 29; destinos inexistentes: 0.
+- Imagenes revisadas: 6; con texto alternativo: 6; cargadas: 6.
+- Validacion del correo: un correo invalido fue rechazado y uno valido aceptado.
+
+Dashboard:
+- Destinos internos revisados: ninguno inexistente.
+- El catalogo y sus 35 filas/tarjetas cargaron correctamente.
+- En la revisión adicional, la búsqueda "miel" mostró un producto.
+- En móvil, el menú abre/cierra y el diálogo de alta abre; la prueba se canceló
+  sin guardar cambios.
+
+Vistas de tienda añadidas:
+- index.html, catalogo.html y carrito.html se cargaron en navegador.
+- Catálogo: se cargaron los 35 productos activos desde productos.json; las
+  imágenes remotas cargaron y los elementos sin fotografía adecuada usan un
+  respaldo ilustrado relacionado.
+- Búsqueda por productor: "Grano Vivo" encontró "Lenteja 1 kg".
+- Filtro de categoría Despensa: 11 resultados. Filtro "Solo disponibles":
+  30 resultados y ningún producto agotado. Orden ascendente mostró primero
+  "Zanahoria 1 kg".
+- Carrito: añadir dos unidades del cepillo (stock 2) funcionó; intentar una
+  tercera mostró el límite de stock. La vista calculó subtotal $25.000 y total
+  $35.000, redujo cantidad y quitó el producto correctamente.
+- Persistencia: el producto se conservó tras recargar; la confirmación del
+  pedido de prueba vació el carrito y no modificó inventario.
+- Responsive: catálogo, carrito y dashboard verificados a 320, 375, 768, 1024
+  y 1440 px sin desbordamiento horizontal.
+- Dashboard: siguió mostrando 35 filas y 35 tarjetas.
+
+Pendiente conocido:
+- La suscripción y la finalización de pedido son demostraciones locales; para
+  recibir datos, procesar pagos o reservar inventario hace falta configurar un
+  backend y los servicios correspondientes.

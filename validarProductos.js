@@ -49,12 +49,27 @@ function validarProductos(lista) {
       idsVistos.add(producto.id);
     }
 
-    if (typeof producto.nombre !== "string" || producto.nombre.trim() === "") {
-      agregarError(referencia, "nombre", "Debe ser un texto no vacío.");
+    if (typeof producto.nombre !== "string") {
+      agregarError(referencia, "nombre", "Debe ser un texto de 3 a 80 caracteres.");
+    } else if (producto.nombre.trim().length < 3 || producto.nombre.trim().length > 80) {
+      agregarError(
+        referencia,
+        "nombre",
+        "Debe tener entre 3 y 80 caracteres, sin contar espacios al inicio o al final.",
+      );
     }
 
-    if (typeof producto.productor !== "string" || producto.productor.trim() === "") {
-      agregarError(referencia, "productor", "Debe ser un texto no vacío.");
+    if (typeof producto.productor !== "string") {
+      agregarError(referencia, "productor", "Debe ser un texto de 3 a 80 caracteres.");
+    } else if (
+      producto.productor.trim().length < 3 ||
+      producto.productor.trim().length > 80
+    ) {
+      agregarError(
+        referencia,
+        "productor",
+        "Debe tener entre 3 y 80 caracteres, sin contar espacios al inicio o al final.",
+      );
     }
 
     if (!categoriasValidas.includes(producto.categoria)) {

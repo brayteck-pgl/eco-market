@@ -1,0 +1,207 @@
+DOCUMENTACION DEL PROCESO CON IA - TALLER ECOMARKET
+Fecha: 2026-11-06
+
+1. ALCANCE Y LIMITACION DEL REGISTRO
+
+El historial de prompts utilizado antes de esta sesion para generar la landing,
+el dashboard y el dataset no fue conservado. Por ese motivo, no es posible
+reproducirlos literalmente. A continuacion se incluye una reconstruccion
+retrospectiva de prompts compatibles con las fases del taller. Son ejemplos
+redactados ahora para documentar una metodologia posible; no deben presentarse
+como transcripciones literales ni como evidencia de que se usaron exactamente
+asi durante la creacion original.
+
+Esta bitacora tambien registra por separado el trabajo verificable de continuidad
+y revision realizado en esta sesion.
+
+2. PROMPTS RECONSTRUIDOS COMO EJEMPLOS DE LA METODOLOGIA
+
+Prompt 1 - Priming y recopilacion de contexto
+Tecnica: priming y meta-prompting.
+
+Actua como desarrollador frontend senior con experiencia en comercio electronico
+y accesibilidad. Ayudame a construir un prototipo web llamado EcoMarket, un
+marketplace colombiano que conecta productores locales con consumidores
+interesados en productos sostenibles.
+
+Antes de escribir codigo, revisa el objetivo y pregunta por la informacion que
+falte sobre usuarios, propuesta de valor, identidad visual, contenido y
+restricciones tecnicas. No inventes datos del negocio. La solucion debe usar
+HTML, CSS y JavaScript vanilla; no uses frameworks.
+
+Prompt 2 - Propuesta UX/UI de la landing
+Tecnica: role prompting y solicitud de propuesta estructurada antes del codigo.
+
+Actua como disenador UX/UI para EcoMarket. Propone una landing accesible y
+responsive que presente la marca, categorias de productos, destacados, impacto
+de la compra local, productores, suscripcion y pie de pagina.
+
+Entrega el orden de secciones, el objetivo de cada una, una jerarquia visual,
+paleta y tipografias sugeridas, llamadas a la accion y consideraciones de
+accesibilidad y movil. Explica brevemente las decisiones; no generes codigo.
+
+Prompt 3 - Landing en HTML y CSS separados
+Tecnica: zero-shot con especificacion y restricciones.
+
+Genera index.html semantico en espanol para la propuesta aprobada de EcoMarket.
+Incluye header, navegacion, hero, categorias, productos destacados, impacto,
+productores, formulario de suscripcion y footer. Usa enlaces internos validos,
+alt descriptivos, labels asociados y HTML accesible. No incluyas CSS ni
+JavaScript embebido.
+
+En una solicitud separada, genera styles.css mobile-first para ese HTML. Define
+variables CSS, usa Grid o Flexbox, agrega media queries, foco visible, estados
+hover moderados y una preferencia de movimiento reducido. No uses frameworks.
+
+Prompt 4 - Dashboard y tabla de inventario
+Tecnica: role prompting y especificacion por componentes.
+
+Actua como disenador de dashboards administrativos. Propone un dashboard de
+EcoMarket coherente con la landing, responsive y hecho con HTML/CSS/JavaScript
+vanilla. Debe incluir navegacion lateral con cuatro opciones, bienvenida,
+acciones, tres KPI y una tabla de productos con codigo, producto, categoria,
+precio COP, stock, productor y estado. Incluye badges para Disponible, Stock
+bajo y Agotado, cinco filas de ejemplo y acciones Editar/Eliminar.
+
+En movil, plantea una navegacion que pueda abrirse y cerrarse con un boton
+accesible, y una tabla que se pueda desplazar horizontalmente.
+
+Prompt 5 - Registros iniciales y generacion del dataset
+Tecnica: one-shot para ejemplificar la estructura y few-shot para ampliar los
+datos. Este prompt es una plantilla reconstruida; para una ejecucion real se
+deben pegar los cinco objetos manuales en la seccion indicada.
+
+Actua como especialista en datos de prueba. Genera 30 productos adicionales
+para EcoMarket siguiendo exactamente la estructura de los ejemplos que pegare.
+Devuelve solo JSON valido, sin comentarios ni texto adicional.
+
+Reglas: IDs consecutivos del 6 al 35; nombre y productor de 3 a 80 caracteres;
+categorias solo Frutas y verduras, Despensa, Cuidado personal y Hogar
+sostenible; precio entero positivo COP; stock y stockMinimo enteros mayores o
+iguales a cero; ciudades Bucaramanga, Floridablanca, Girón, Bogotá, Medellín,
+Cali, Tunja o Cúcuta; organico y activo booleanos; fechaRegistro entre
+2026-01-01 y 2026-11-03. No agregues el campo estado.
+
+Ejemplos manuales:
+[Pegar aqui los cinco objetos escritos manualmente antes de pedir la generacion.]
+
+Prompt 6 - Auditoria del dataset y reporte
+Tecnica: meta-validacion / auditoria con criterios explicitos.
+
+Revisa el JSON de productos EcoMarket contra estas reglas: estructura de campos,
+IDs unicos, nombre y productor de 3 a 80 caracteres, categorias y ciudades
+permitidas, precio entero positivo, stock y stockMinimo enteros no negativos,
+booleanos reales y fechas validas entre 2026-01-01 y 2026-11-03.
+
+Devuelve una tabla con registro, campo, problema, causa probable y correccion
+sugerida. No modifiques los datos. Distingue errores comprobables de
+observaciones subjetivas sobre variedad o realismo. El resultado de esta
+revision debe contrastarse con validarProductos.js.
+
+Prompt 7 - Aplicacion CRUD y revision incremental
+Tecnica: prompting por tareas y refinamiento iterativo.
+
+Revisa los archivos existentes de EcoMarket antes de proponer cambios. No
+reconstruyas la aplicacion ni elimines funcionalidades que ya sirven.
+Implementa en JavaScript vanilla la carga inicial desde productos.json, lectura
+y escritura de localStorage, renderizado dinamico, busqueda por nombre/productor,
+filtros combinables de categoria/ciudad/estado, limpieza de filtros y CRUD con
+validacion y confirmacion al eliminar. Actualiza los KPI despues de cambios.
+
+Haz cambios pequenos y coherentes con el HTML/CSS existentes. Al terminar,
+indica que pruebas ejecutar para comprobar cada flujo; no afirmes que una prueba
+paso si no fue ejecutada.
+
+3. PROCESO VERIFICABLE EN ESTA SESION
+
+- Se proporciono el contexto del proyecto EcoMarket, el estado conocido de los
+  archivos, las reglas de trabajo y la solicitud de auditar el taller antes de
+  modificar codigo.
+- Se compartio el documento original del taller y se contrastaron sus requisitos
+  con el proyecto existente.
+- El trabajo se dividio y solicito de forma secuencial: tabla del dashboard,
+  validaciones, menu movil, pruebas CRUD y pruebas integrales.
+- Para cada correccion se revisaron los archivos relacionados, se hicieron
+  cambios puntuales y se comprobaron resultados mediante pruebas o navegador.
+
+Tecnicas observables en esta sesion:
+- Instrucciones con rol y contexto del proyecto.
+- Refinamiento iterativo por tareas pequenas y verificables.
+- Contraste explicito entre requisitos y estado real del codigo.
+- Pruebas basadas en reglas y resultados observables.
+
+Las tecnicas indicadas para los prompts reconstruidos describen como se podrian
+clasificar esos ejemplos. No demuestran cuales se usaron en las conversaciones
+originales.
+
+4. AJUSTES REALIZADOS A LAS RESPUESTAS/CODIGO
+
+- Dashboard: se agrego una tabla dinamica sincronizada con los filtros y las
+  tarjetas CRUD existentes.
+- Validacion: se agregaron limites de 3 a 80 caracteres para nombre y productor,
+  segun la estructura del dataset del taller.
+- Menu: se completo el comportamiento responsive con cierre por boton, seleccion
+  de opcion, clic fuera y tecla Escape.
+- Responsive: las pruebas detectaron desbordamiento de filtros a 1024 px; se
+  ajusto el breakpoint de CSS y se repitieron las comprobaciones.
+- Las pruebas CRUD y la validacion del dataset quedaron registradas en
+  reporte-pruebas-crud.txt y reporte-validacion.txt.
+- Vistas de tienda: index.html, catalogo.html y carrito.html se adaptaron a los
+  wireframes. El catálogo consume productos.json o los productos guardados por
+  el dashboard, con búsqueda, filtros, orden y agregado al carrito.
+- Carrito: se añadió persistencia independiente en localStorage, controles de
+  cantidad y eliminación, cálculo de subtotal/envío/total y un cierre de pedido
+  simulado. No se procesa un pago ni se modifica el stock sin backend.
+- Imágenes: se asignaron imágenes relacionadas a los productos del dataset y
+  respaldos ilustrados para elementos sin fotografía apropiada o que no cargue.
+- Dashboard: se verificaron los 35 productos, la búsqueda por nombre/productor,
+  el menú móvil, el diálogo de alta y los anchos responsive. Su lógica CRUD y
+  persistencia se conservaron.
+
+5. BORRADOR DE RESPUESTAS PARA LAS PREGUNTAS DE REFLEXION
+
+Estas respuestas deben revisarse y personalizarse con la experiencia del grupo.
+
+1. Diferencias entre zero-shot, one-shot y few-shot:
+   Zero-shot solicita una tarea sin ejemplos; one-shot aporta un ejemplo; few-shot
+   aporta varios. En una generacion de productos, los ejemplos ayudan a mantener
+   la forma y los tipos del JSON, pero el resultado debe validarse con reglas de
+   JavaScript.
+
+2. Importancia de definir estructura y reglas antes de generar datos:
+   Permite que la IA conozca los nombres de campos, tipos, rangos y valores
+   permitidos. Esto reduce registros incompatibles con el formulario y evita
+   corregir inconsistencias de forma manual despues.
+
+3. Errores detectados por la validacion:
+   En la ejecucion sobre los 35 productos no se encontraron errores de datos.
+   Al comparar el validador con las reglas del taller se detecto que faltaba
+   verificar la longitud de nombre y productor; se agrego esa regla y se probaron
+   valores dentro y fuera de los limites.
+
+4. Ventajas de separar datos, logica y presentacion:
+   productos.json contiene los datos, app.js implementa la interaccion y los
+   calculos, y los HTML/CSS presentan la interfaz. Esta separacion facilita
+   localizar errores y cambiar una parte sin rehacer las demas.
+
+5. Limitaciones de localStorage frente a una base de datos:
+   localStorage solo persiste en el navegador y origen actuales; no sincroniza
+   entre usuarios o dispositivos, no ofrece respaldo centralizado ni control de
+   acceso y puede ser borrado por el usuario.
+
+6. Cambios para produccion:
+   Se requeririan backend y base de datos compartida, autenticacion y permisos,
+   validacion tambien en el servidor, respaldo y monitoreo, y un servicio real
+   para suscripciones. Si se habilitan compras, tambien se integrarian inventario
+   transaccional, logistica y un proveedor de pagos seguro.
+
+6. EVIDENCIAS RELACIONADAS
+
+- reporte-validacion.txt
+- reporte-pruebas-crud.txt
+- reporte-pruebas-integrales.txt
+- evidencias/01-landing-desktop.png
+- evidencias/02-dashboard-desktop.png
+- evidencias/03-dashboard-movil.png
+- evidencias/04-dashboard-filtros.png
+- evidencias/05-dashboard-modal.png

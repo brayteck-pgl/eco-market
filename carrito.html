@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Revisa los productos seleccionados para tu pedido de prueba en EcoMarket.">
+    <title>Carrito | EcoMarket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20261106">
+  </head>
+  <body class="store-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="index.html#inicio" aria-label="EcoMarket, ir al inicio">
+          <span class="brand-mark" aria-hidden="true">e</span>
+          <span>eco<span class="brand-light">market</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="catalogo.html">Productos</a>
+          <a href="catalogo.html#ofertas">Ofertas</a>
+          <a href="index.html#productores">Nosotros</a>
+          <a href="index.html#suscripcion">Contacto</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary aria-label="Abrir menú de navegación">Menú</summary>
+          <nav aria-label="Navegación móvil">
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Productos</a>
+            <a href="catalogo.html#ofertas">Ofertas</a>
+            <a href="index.html#productores">Nosotros</a>
+            <a href="index.html#suscripcion">Contacto</a>
+          </nav>
+        </details>
+        <a class="store-cart-link" href="carrito.html" aria-label="Ver carrito">
+          <span aria-hidden="true">🛒</span><span class="store-cart-count">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="store-main container" id="contenido">
+      <nav class="store-breadcrumb" aria-label="Ruta de navegación">
+        <a href="index.html">Inicio</a><span aria-hidden="true">›</span><span aria-current="page">Carrito</span>
+      </nav>
+
+      <div class="store-cart-heading">
+        <span aria-hidden="true">🛒</span>
+        <h1>Carrito de compras</h1>
+      </div>
+
+      <div class="store-cart-layout">
+        <section class="store-cart-items" aria-labelledby="cart-items-title">
+          <h2 class="visually-hidden" id="cart-items-title">Productos en tu carrito</h2>
+          <div class="store-cart-table-head" aria-hidden="true">
+            <span>Producto</span><span>Precio</span><span>Cantidad</span><span>Subtotal</span><span></span>
+          </div>
+          <div id="store-cart-lines" aria-live="polite" aria-busy="true"></div>
+          <p class="store-cart-empty" id="store-cart-empty" hidden>Tu carrito está vacío. Explora el catálogo para encontrar productos sostenibles.</p>
+          <p class="store-feedback" id="cart-feedback" role="status" aria-live="polite" hidden></p>
+          <a class="store-continue-link" href="catalogo.html">← Seguir comprando</a>
+        </section>
+
+        <aside class="store-order-summary" aria-labelledby="order-summary-title">
+          <h2 id="order-summary-title">Resumen del pedido</h2>
+          <div><span>Subtotal</span><strong id="store-cart-subtotal">$0</strong></div>
+          <div><span>Envío</span><strong id="store-cart-shipping">$0</strong></div>
+          <div class="store-order-total"><span>Total</span><strong id="store-cart-total">$0</strong></div>
+          <button class="button store-checkout-button" id="store-checkout" type="button" disabled>Finalizar pedido de prueba <span aria-hidden="true">→</span></button>
+          <p>Pedido de demostración: no se procesa pago ni se descuenta inventario.</p>
+        </aside>
+      </div>
+    </main>
+    <script src="validarProductos.js" defer></script>
+    <script src="storefront.js?v=20261106" defer></script>
+  </body>
+</html>

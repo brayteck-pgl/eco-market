@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explora productos sostenibles de productores locales y compra en EcoMarket.">
+    <title>Productos | EcoMarket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20261106">
+  </head>
+  <body class="store-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="index.html#inicio" aria-label="EcoMarket, ir al inicio">
+          <span class="brand-mark" aria-hidden="true">e</span>
+          <span>eco<span class="brand-light">market</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="catalogo.html" aria-current="page">Productos</a>
+          <a href="catalogo.html#ofertas">Ofertas</a>
+          <a href="index.html#productores">Nosotros</a>
+          <a href="index.html#suscripcion">Contacto</a>
+        </nav>
+        <details class="mobile-menu">
+          <summary aria-label="Abrir menú de navegación">Menú</summary>
+          <nav aria-label="Navegación móvil">
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Productos</a>
+            <a href="catalogo.html#ofertas">Ofertas</a>
+            <a href="index.html#productores">Nosotros</a>
+            <a href="index.html#suscripcion">Contacto</a>
+          </nav>
+        </details>
+        <a class="store-cart-link" href="carrito.html" aria-label="Ver carrito">
+          <span aria-hidden="true">🛒</span><span class="store-cart-count">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="store-main container" id="contenido">
+      <nav class="store-breadcrumb" aria-label="Ruta de navegación">
+        <a href="index.html">Inicio</a><span aria-hidden="true">›</span><span aria-current="page">Productos</span>
+      </nav>
+
+      <div class="store-page-heading">
+        <div>
+          <p class="eyebrow">Compra consciente, vive mejor</p>
+          <h1>Productos</h1>
+        </div>
+        <label class="store-sort">Ordenar por
+          <select id="store-sort" aria-label="Ordenar productos">
+            <option value="featured">Catálogo</option>
+            <option value="name">Nombre</option>
+            <option value="price-asc">Menor precio</option>
+            <option value="price-desc">Mayor precio</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="store-catalog-layout">
+        <aside class="store-filters" aria-label="Filtros de productos">
+          <h2>Filtrar por</h2>
+          <label class="store-search-field" for="store-search">Buscar
+            <input id="store-search" type="search" placeholder="Producto o productor" autocomplete="off">
+          </label>
+          <fieldset>
+            <legend>Categoría</legend>
+            <select id="store-category" aria-label="Filtrar por categoría">
+              <option value="">Todas las categorías</option>
+              <option>Frutas y verduras</option>
+              <option>Despensa</option>
+              <option>Cuidado personal</option>
+              <option>Hogar sostenible</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Precio</legend>
+            <input class="store-range" id="store-price" type="range" min="0" max="100000" value="100000" aria-label="Precio máximo">
+            <div class="store-range-labels"><span>$0</span><span id="store-price-label">$100.000</span></div>
+          </fieldset>
+          <fieldset>
+            <legend>Disponibilidad</legend>
+            <label><input id="store-available" type="checkbox"> Solo disponibles</label>
+          </fieldset>
+          <button class="store-reset-button" id="store-reset" type="button">Limpiar filtros</button>
+        </aside>
+
+        <section class="store-products" id="ofertas" aria-label="Productos del catálogo">
+          <p class="store-results-count" id="store-results-count" aria-live="polite">Cargando catálogo…</p>
+          <p class="store-feedback" id="store-feedback" role="status" aria-live="polite" hidden></p>
+          <div class="store-product-grid" id="store-product-grid" aria-busy="true"></div>
+          <p class="store-empty" id="store-empty" hidden>No hay productos que coincidan con los filtros.</p>
+        </section>
+      </div>
+    </main>
+    <script src="validarProductos.js" defer></script>
+    <script src="storefront.js?v=20261106" defer></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+REPORTE DE VALIDACION DEL DATASET ECOMARKET
+Fecha: 2026-11-06
+
+Archivos revisados:
+- productos.json
+- validarProductos.js
+
+Reglas verificadas:
+- IDs enteros, positivos y unicos.
+- Nombre y productor de 3 a 80 caracteres, ignorando espacios al inicio y al final.
+- Categorias y ciudades dentro de las listas permitidas.
+- Precio entero positivo.
+- Stock y stockMinimo enteros mayores o iguales a cero.
+- organico y activo de tipo booleano.
+- fechaRegistro valida y dentro del rango 2026-01-01 a 2026-11-03.
+
+Resultado del dataset:
+- Productos revisados: 35.
+- Errores encontrados: 0.
+- Estado: aprobado por validarProductos().
+
+Pruebas de limites para nombre y productor:
+- Longitudes 3 y 80: aceptadas.
+- Longitudes 2 y 81: rechazadas.
+- Texto compuesto solo por espacios: rechazado.
+- Valor que no es texto: rechazado.
+- Casos ejecutados: 12.
+- Resultado: 12 pruebas aprobadas.
+
+Hallazgo y correccion:
+- Hallazgo: la version anterior no validaba los limites de longitud de nombre
+  y productor establecidos en el taller.
+- Correccion: validarProductos.js ahora comprueba ambos limites y devuelve
+  errores que identifican el producto y el campo afectado.
+- productos.json no fue modificado porque los 35 registros cumplen las reglas.
+  No se generaron copias antes/despues del dataset al no haber correcciones de datos.
+
+Verificacion ejecutada:
+- node --check validarProductos.js
+- Prueba automatizada con Node.js sobre el dataset y los casos de limite.

@@ -8,36 +8,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20261106">
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
 
     <header class="site-header">
       <div class="container header-content">
-        <a class="brand" href="#inicio" aria-label="EcoMarket, ir al inicio">
+        <a class="brand" href="index.html#inicio" aria-label="EcoMarket, ir al inicio">
           <span class="brand-mark" aria-hidden="true">e</span>
           <span>eco<span class="brand-light">market</span></span>
         </a>
 
         <nav class="main-nav" aria-label="Navegación principal">
-          <a href="#categorias">Categorías</a>
-          <a href="#productos">Destacados</a>
-          <a href="#impacto">Nuestro impacto</a>
-          <a href="#productores">Productores</a>
+          <a href="index.html#inicio" aria-current="page">Inicio</a>
+          <a href="catalogo.html">Productos</a>
+          <a href="catalogo.html#ofertas">Ofertas</a>
+          <a href="#productores">Nosotros</a>
+          <a href="#suscripcion">Contacto</a>
         </nav>
 
         <details class="mobile-menu">
           <summary aria-label="Abrir menú de navegación">Menú</summary>
           <nav aria-label="Navegación móvil">
-            <a href="#categorias">Categorías</a>
-            <a href="#productos">Destacados</a>
-            <a href="#impacto">Nuestro impacto</a>
-            <a href="#productores">Productores</a>
+            <a href="index.html#inicio">Inicio</a>
+            <a href="catalogo.html">Productos</a>
+            <a href="catalogo.html#ofertas">Ofertas</a>
+            <a href="#productores">Nosotros</a>
+            <a href="#suscripcion">Contacto</a>
           </nav>
         </details>
 
-        <a class="button button-small header-cta" href="#productos">Explorar productos</a>
+        <a class="store-cart-link" href="carrito.html" aria-label="Ver carrito">
+          <span aria-hidden="true">🛒</span><span class="store-cart-count">0</span>
+        </a>
       </div>
     </header>
 
@@ -46,10 +50,10 @@
         <div class="container hero-grid">
           <div class="hero-copy">
             <p class="eyebrow"><span aria-hidden="true">✳</span> Cerca de ti, bueno para todos</p>
-            <h1 id="hero-title">Lo bueno de nuestra tierra, <em>más cerca de tu mesa.</em></h1>
-            <p class="hero-description">Descubre alimentos y productos sostenibles de pequeños productores colombianos. Compra con intención y disfruta lo local.</p>
+            <h1 id="hero-title">Compra sostenible, <em>vive mejor.</em></h1>
+            <p class="hero-description">Productos ecológicos, reutilizables y amigables con el planeta, hechos por productores locales.</p>
             <div class="hero-actions">
-              <a class="button" href="#productos">Explorar productos <span aria-hidden="true">→</span></a>
+              <a class="button" href="catalogo.html">Ver productos <span aria-hidden="true">→</span></a>
               <a class="text-link" href="#impacto">Conoce nuestro propósito <span aria-hidden="true">↓</span></a>
             </div>
             <div class="hero-note">
@@ -69,6 +73,27 @@
               <span>El campo colombiano, más cerca</span>
             </div>
             <span class="hero-decoration" aria-hidden="true">Cultivado<br>con cariño</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-benefits" aria-label="Beneficios de EcoMarket">
+        <div class="container home-benefits-grid">
+          <div class="home-benefit">
+            <span aria-hidden="true">♧</span>
+            <div><strong>Envío responsable</strong><small>Del productor a tu hogar</small></div>
+          </div>
+          <div class="home-benefit">
+            <span aria-hidden="true">✿</span>
+            <div><strong>Productos ecológicos</strong><small>Cuida el planeta</small></div>
+          </div>
+          <div class="home-benefit">
+            <span aria-hidden="true">✓</span>
+            <div><strong>Compra consciente</strong><small>Apoya lo local</small></div>
+          </div>
+          <div class="home-benefit">
+            <span aria-hidden="true">♡</span>
+            <div><strong>Hecho con cuidado</strong><small>Para ti y tu hogar</small></div>
           </div>
         </div>
       </section>
@@ -118,51 +143,12 @@
             <p class="section-intro">Conoce algunos productos que podrían hacer parte del catálogo de EcoMarket.</p>
           </div>
 
-          <div class="product-grid">
-            <article class="product-card">
-              <a class="product-image-link" href="#suscripcion" aria-label="Conocer novedades sobre frutas de temporada">
-                <img
-                  src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                  alt="Frutas frescas de varios colores dispuestas en una mesa"
-                  loading="lazy"
-                >
-              </a>
-              <div class="product-details">
-                <p class="product-category">Frutas y verduras</p>
-                <h3>Frutas de temporada</h3>
-                <p class="product-description">Una invitación a disfrutar lo que ofrece cada cosecha.</p>
-              </div>
-            </article>
-            <article class="product-card">
-              <a class="product-image-link" href="#suscripcion" aria-label="Conocer novedades sobre productos de despensa">
-                <img
-                  src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                  alt="Miel dorada servida en un recipiente de vidrio"
-                  loading="lazy"
-                >
-              </a>
-              <div class="product-details">
-                <p class="product-category">Despensa</p>
-                <h3>Sabores para compartir</h3>
-                <p class="product-description">Ideas para llenar tu despensa con opciones de origen local.</p>
-              </div>
-            </article>
-            <article class="product-card">
-              <a class="product-image-link" href="#suscripcion" aria-label="Conocer novedades sobre productos sostenibles para el hogar">
-                <img
-                  src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                  alt="Espacio de hogar luminoso decorado con plantas"
-                  loading="lazy"
-                >
-              </a>
-              <div class="product-details">
-                <p class="product-category">Hogar sostenible</p>
-                <h3>Pequeños cambios en casa</h3>
-                <p class="product-description">Alternativas pensadas para acompañar una vida más consciente.</p>
-              </div>
-            </article>
+          <div class="product-grid" id="home-product-grid" aria-busy="true">
+            <p class="catalog-empty">Cargando productos del catálogo…</p>
           </div>
-          <p class="content-note">Imágenes y nombres ilustrativos; catálogo, disponibilidad y precios por confirmar.</p>
+          <p class="store-feedback" id="home-store-feedback" role="status" aria-live="polite" hidden></p>
+          <p class="content-note">Productos, precios y disponibilidad sincronizados con el catálogo de EcoMarket.</p>
+          <a class="text-link" href="catalogo.html">Ver todo el catálogo <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
@@ -215,7 +201,7 @@
             <h2 id="newsletter-title">Lo bueno también <em>se comparte.</em></h2>
             <p>Déjanos tus datos para recibir novedades de EcoMarket y de su propuesta de productos locales.</p>
           </div>
-          <form class="newsletter-form" action="#" method="get">
+          <form id="newsletter-form" class="newsletter-form" action="#" method="post" novalidate>
             <div class="form-field">
               <label for="nombre">Tu nombre</label>
               <input id="nombre" name="nombre" type="text" autocomplete="given-name" placeholder="¿Cómo te llamas?" required>
@@ -225,6 +211,7 @@
               <input id="correo" name="correo" type="email" autocomplete="email" placeholder="nombre@correo.com" required>
             </div>
             <button class="button" type="submit">Quiero recibir novedades <span aria-hidden="true">→</span></button>
+            <p id="newsletter-feedback" class="form-status" aria-live="polite" role="status" hidden></p>
             <p class="form-note">Al enviar, aceptas recibir información de EcoMarket. Puedes dejar de recibirla cuando quieras.</p>
           </form>
         </div>
@@ -234,7 +221,7 @@
     <footer class="site-footer">
       <div class="container footer-main">
         <div class="footer-brand">
-          <a class="brand brand-footer" href="#inicio" aria-label="EcoMarket, volver al inicio">
+          <a class="brand brand-footer" href="index.html#inicio" aria-label="EcoMarket, volver al inicio">
             <span class="brand-mark" aria-hidden="true">e</span>
             <span>eco<span class="brand-light">market</span></span>
           </a>
@@ -243,7 +230,7 @@
         <div class="footer-links">
           <h2>Explora</h2>
           <a href="#categorias">Categorías</a>
-          <a href="#productos">Destacados</a>
+          <a href="catalogo.html">Productos</a>
           <a href="#impacto">Nuestro impacto</a>
         </div>
         <div class="footer-links">
@@ -257,5 +244,32 @@
         <a href="#inicio">Volver arriba ↑</a>
       </div>
     </footer>
+
+    <script>
+      const newsletterForm = document.querySelector("#newsletter-form");
+      const newsletterFeedback = document.querySelector("#newsletter-feedback");
+
+      if (newsletterForm && newsletterFeedback) {
+        newsletterForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          if (!newsletterForm.reportValidity()) {
+            newsletterFeedback.hidden = true;
+            return;
+          }
+
+          const formData = new FormData(newsletterForm);
+          const nombre = String(formData.get("nombre") || "").trim();
+          const correo = String(formData.get("correo") || "").trim();
+
+          newsletterFeedback.textContent = `Gracias${nombre ? `, ${nombre}` : ""}. Te avisaremos en ${correo} cuando haya nuevas novedades de EcoMarket.`;
+          newsletterFeedback.classList.add("is-success");
+          newsletterFeedback.hidden = false;
+          newsletterForm.reset();
+        });
+      }
+    </script>
+    <script src="validarProductos.js" defer></script>
+    <script src="storefront.js?v=20261106" defer></script>
   </body>
 </html>
