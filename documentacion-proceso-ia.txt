@@ -1,5 +1,5 @@
 DOCUMENTACION DEL PROCESO CON IA - TALLER ECOMARKET
-Fecha: 2026-11-06
+Fecha de actualizacion: 2026-11-08
 
 1. ALCANCE Y LIMITACION DEL REGISTRO
 
@@ -119,16 +119,26 @@ paso si no fue ejecutada.
   modificar codigo.
 - Se compartio el documento original del taller y se contrastaron sus requisitos
   con el proyecto existente.
-- El trabajo se dividio y solicito de forma secuencial: tabla del dashboard,
-  validaciones, menu movil, pruebas CRUD y pruebas integrales.
+- El trabajo se solicito de forma secuencial: tabla del dashboard, validaciones,
+  menu movil, pruebas CRUD, pruebas integrales y revision de entregables.
 - Para cada correccion se revisaron los archivos relacionados, se hicieron
   cambios puntuales y se comprobaron resultados mediante pruebas o navegador.
+- En la continuacion del trabajo se solicitaron, paso a paso, una seccion de
+  testimonios y la retirada del JavaScript incrustado de index.html.
+- Se recibio la indicacion explicita de nombrar en espanol las variables, clases
+  e IDs nuevos, y de integrar la suscripcion en un archivo JavaScript existente
+  en lugar de crear newsletter.js.
+- La prueba final del formulario con datos validos mostro la confirmacion y
+  limpio los campos; con un correo invalido, el navegador bloqueo el envio y
+  conservo el valor para corregirlo. Se comprobo tambien que la URL no cambiara.
 
 Tecnicas observables en esta sesion:
 - Instrucciones con rol y contexto del proyecto.
 - Refinamiento iterativo por tareas pequenas y verificables.
 - Contraste explicito entre requisitos y estado real del codigo.
 - Pruebas basadas en reglas y resultados observables.
+- Restricciones de nomenclatura y reutilizacion de codigo acordadas con el
+  usuario antes de ajustar la implementacion.
 
 Las tecnicas indicadas para los prompts reconstruidos describen como se podrian
 clasificar esos ejemplos. No demuestran cuales se usaron en las conversaciones
@@ -157,10 +167,26 @@ originales.
 - Dashboard: se verificaron los 35 productos, la búsqueda por nombre/productor,
   el menú móvil, el diálogo de alta y los anchos responsive. Su lógica CRUD y
   persistencia se conservaron.
+- Testimonios: se agrego una seccion con ejemplos identificados como ficticios,
+  aviso para reemplazarlos por opiniones reales autorizadas y enlaces de
+  navegacion. Los nombres de las clases e IDs nuevos se escribieron en espanol.
+- JavaScript de la pagina principal: se integro el manejador de suscripcion en
+  storefront.js, que ya se carga en las paginas de la tienda, y se retiro el
+  bloque de JavaScript incrustado de index.html. No se dejo un archivo
+  newsletter.js separado. Los IDs y variables nuevos relacionados con el
+  formulario se nombraron en espanol.
+- Validacion del formulario: se verifico en el navegador el caso valido y el
+  caso invalido. La suscripcion es solo una demostracion local; no envia ni
+  almacena datos en un servicio.
+- Cache del navegador: despues de actualizar storefront.js se cambio su
+  parametro de version en index.html, catalogo.html y carrito.html para que las
+  tres paginas soliciten la version actual del archivo.
 
 5. BORRADOR DE RESPUESTAS PARA LAS PREGUNTAS DE REFLEXION
 
 Estas respuestas deben revisarse y personalizarse con la experiencia del grupo.
+Los puntos tecnicos siguientes resumen resultados comprobados del proyecto;
+agreguen ejemplos propios del proceso del grupo antes de entregar.
 
 1. Diferencias entre zero-shot, one-shot y few-shot:
    Zero-shot solicita una tarea sin ejemplos; one-shot aporta un ejemplo; few-shot

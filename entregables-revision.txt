@@ -1,5 +1,5 @@
 REVISION DE ENTREGABLES - TALLER ECOMARKET
-Fecha de revision: 2026-11-06
+Fecha de revision: 2026-11-08
 
 ENTREGABLES DEL PROYECTO
 - index.html: presente.
@@ -40,11 +40,17 @@ VISTAS DE TIENDA
 DOCUMENTACION DEL PROCESO CON IA
 - El taller solicita un documento breve con prompts utilizados, tecnica aplicada
   y ajustes realizados a las respuestas de IA.
-- Se creo documentacion-proceso-ia.txt con el proceso verificable de esta sesion,
-  siete prompts reconstruidos como ejemplos metodologicos, las tecnicas
-  propuestas para cada uno, los ajustes efectuados y un borrador de reflexiones.
+- documentacion-proceso-ia.txt registra el proceso verificable, siete prompts
+  reconstruidos como ejemplos metodologicos, las tecnicas propuestas, los
+  ajustes efectuados y respuestas tecnicas preliminares a las reflexiones.
 - Los prompts son reconstrucciones retrospectivas, no transcripciones literales
   ni evidencia de que se usaron exactamente asi durante la creacion original.
+- El documento se actualizo el 2026-11-08 con los testimonios, la integracion
+  del formulario en storefront.js, la nomenclatura en espanol solicitada y las
+  pruebas del formulario.
+- Antes de entregar, el grupo debe agregar ejemplos de su experiencia a las
+  reflexiones y sustituir los prompts reconstruidos por los literales si los
+  conserva.
 
 VERSIONES DEL DATASET
 - No se modifico productos.json durante la validacion; los 35 registros pasaron.
@@ -53,12 +59,13 @@ VERSIONES DEL DATASET
   limites de longitud añadidos al validador.
 
 REPOSITORIO
-- La carpeta de trabajo no contiene metadatos de Git; no se puede comprobar desde
-  aqui si los archivos estan confirmados o publicados en GitHub.
-- Antes de entregar, verificar el repositorio remoto y subir los archivos finales.
+- La carpeta de trabajo contiene metadatos de Git y commits locales.
+- La publicacion de los cambios pendientes en GitHub aun debe verificarse.
 
 PENDIENTES PARA CERRAR LA ENTREGA
 1. Si se recuperan chats anteriores, reemplazar/complementar los ejemplos con
    los prompts literales y anotar los cambios reales.
-2. Revisar y personalizar las respuestas de reflexion con la experiencia del grupo.
-3. Verificar la version publicada en GitHub.
+2. Personalizar las respuestas de reflexion con la experiencia del grupo.
+3. Reemplazar los testimonios ficticios por opiniones reales autorizadas antes
+   de presentar el sitio como una tienda real.
+4. Verificar la version publicada en GitHub y subir los cambios finales.

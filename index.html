@@ -25,6 +25,7 @@
           <a href="catalogo.html">Productos</a>
           <a href="catalogo.html#ofertas">Ofertas</a>
           <a href="#productores">Nosotros</a>
+          <a href="#testimonios">Testimonios</a>
           <a href="#suscripcion">Contacto</a>
         </nav>
 
@@ -35,6 +36,7 @@
             <a href="catalogo.html">Productos</a>
             <a href="catalogo.html#ofertas">Ofertas</a>
             <a href="#productores">Nosotros</a>
+            <a href="#testimonios">Testimonios</a>
             <a href="#suscripcion">Contacto</a>
           </nav>
         </details>
@@ -65,7 +67,7 @@
             <img
               class="hero-image"
               src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&amp;fit=crop&amp;w=1100&amp;q=85"
-              alt="Canastas con frutas y verduras frescas en un mercado"
+              alt="Estantes con frutas y verduras frescas en un mercado"
               fetchpriority="high"
             >
             <div class="image-caption">
@@ -157,7 +159,7 @@
           <div class="impact-image-wrap">
             <img
               src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
-              alt="Manos trabajando la tierra para cultivar alimentos"
+              alt="Cultivos verdes y campos de cultivo desde el aire"
               loading="lazy"
             >
             <span class="impact-image-label">Elegir local también cuenta</span>
@@ -187,9 +189,36 @@
           <div class="producer-photo">
             <img
               src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
-              alt="Cultivo verde en el campo bajo la luz del día"
+              alt="Campo de cultivo al atardecer bajo la luz del sol"
               loading="lazy"
             >
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonios section-space" id="testimonios" aria-labelledby="titulo-testimonios">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Una comunidad por construir</p>
+              <h2 id="titulo-testimonios">Voces de nuestra <em>comunidad.</em></h2>
+            </div>
+            <p class="section-intro">Un espacio para compartir las experiencias de quienes compran local y producen con propósito.</p>
+          </div>
+          <p class="aviso-testimonios">Contenido de demostración: estos testimonios son ficticios y deben reemplazarse por citas reales autorizadas antes de publicar.</p>
+          <div class="cuadricula-testimonios">
+            <figure class="tarjeta-testimonio">
+              <blockquote>“Me gustaría encontrar en un solo lugar productos locales y conocer quién los cultiva.”</blockquote>
+              <figcaption>Compradora · ejemplo ficticio</figcaption>
+            </figure>
+            <figure class="tarjeta-testimonio">
+              <blockquote>“Un catálogo cercano puede ayudar a que más personas descubran el trabajo de pequeños productores.”</blockquote>
+              <figcaption>Productor aliado · ejemplo ficticio</figcaption>
+            </figure>
+            <figure class="tarjeta-testimonio">
+              <blockquote>“Elegir con información sobre el origen hace que cada compra se sienta más consciente.”</blockquote>
+              <figcaption>Comunidad EcoMarket · ejemplo ficticio</figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -201,7 +230,7 @@
             <h2 id="newsletter-title">Lo bueno también <em>se comparte.</em></h2>
             <p>Déjanos tus datos para recibir novedades de EcoMarket y de su propuesta de productos locales.</p>
           </div>
-          <form id="newsletter-form" class="newsletter-form" action="#" method="post" novalidate>
+          <form id="formulario-suscripcion" class="formulario-suscripcion" action="#" method="post" novalidate>
             <div class="form-field">
               <label for="nombre">Tu nombre</label>
               <input id="nombre" name="nombre" type="text" autocomplete="given-name" placeholder="¿Cómo te llamas?" required>
@@ -211,8 +240,8 @@
               <input id="correo" name="correo" type="email" autocomplete="email" placeholder="nombre@correo.com" required>
             </div>
             <button class="button" type="submit">Quiero recibir novedades <span aria-hidden="true">→</span></button>
-            <p id="newsletter-feedback" class="form-status" aria-live="polite" role="status" hidden></p>
-            <p class="form-note">Al enviar, aceptas recibir información de EcoMarket. Puedes dejar de recibirla cuando quieras.</p>
+            <p id="mensaje-suscripcion" class="estado-formulario" aria-live="polite" role="status" hidden></p>
+            <p class="nota-formulario">Al enviar, aceptas recibir información de EcoMarket. Puedes dejar de recibirla cuando quieras.</p>
           </form>
         </div>
       </section>
@@ -237,6 +266,7 @@
           <h2>Conversemos</h2>
           <a href="#suscripcion">Recibe novedades</a>
           <a href="#productores">Productores</a>
+          <a href="#testimonios">Testimonios</a>
         </div>
       </div>
       <div class="container footer-bottom">
@@ -245,31 +275,7 @@
       </div>
     </footer>
 
-    <script>
-      const newsletterForm = document.querySelector("#newsletter-form");
-      const newsletterFeedback = document.querySelector("#newsletter-feedback");
-
-      if (newsletterForm && newsletterFeedback) {
-        newsletterForm.addEventListener("submit", (event) => {
-          event.preventDefault();
-
-          if (!newsletterForm.reportValidity()) {
-            newsletterFeedback.hidden = true;
-            return;
-          }
-
-          const formData = new FormData(newsletterForm);
-          const nombre = String(formData.get("nombre") || "").trim();
-          const correo = String(formData.get("correo") || "").trim();
-
-          newsletterFeedback.textContent = `Gracias${nombre ? `, ${nombre}` : ""}. Te avisaremos en ${correo} cuando haya nuevas novedades de EcoMarket.`;
-          newsletterFeedback.classList.add("is-success");
-          newsletterFeedback.hidden = false;
-          newsletterForm.reset();
-        });
-      }
-    </script>
     <script src="validarProductos.js" defer></script>
-    <script src="storefront.js?v=20261106" defer></script>
+    <script src="storefront.js?v=20261108" defer></script>
   </body>
 </html>

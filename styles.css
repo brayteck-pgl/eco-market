@@ -662,6 +662,43 @@ h2 em {
   object-fit: cover;
 }
 
+.testimonios {
+  background: var(--color-white);
+}
+
+.aviso-testimonios {
+  margin: -0.75rem 0 1.25rem;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.cuadricula-testimonios {
+  display: grid;
+  gap: 1rem;
+}
+
+.tarjeta-testimonio {
+  margin: 0;
+  padding: 1.4rem;
+  border: 1px solid rgb(31 58 45 / 9%);
+  border-radius: var(--radius-card);
+  background: var(--color-cream);
+}
+
+.tarjeta-testimonio blockquote {
+  margin: 0 0 1.25rem;
+  color: var(--color-forest);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.45;
+}
+
+.tarjeta-testimonio figcaption {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 .newsletter {
   background: #e8f0df;
 }
@@ -677,7 +714,7 @@ h2 em {
   color: var(--color-muted);
 }
 
-.newsletter-form {
+.formulario-suscripcion {
   display: grid;
   gap: 1rem;
 }
@@ -711,12 +748,12 @@ h2 em {
   border-color: var(--color-leaf);
 }
 
-.newsletter-form .button {
+.formulario-suscripcion .button {
   width: 100%;
   margin-top: 0.25rem;
 }
 
-.form-status {
+.estado-formulario {
   margin: 0;
   padding: 0.75rem 0.85rem;
   border-radius: 0.7rem;
@@ -726,11 +763,11 @@ h2 em {
   font-weight: 700;
 }
 
-.form-status.is-success {
+.estado-formulario.is-success {
   border: 1px solid #c8e6cf;
 }
 
-.form-note {
+.nota-formulario {
   margin: 0;
   color: var(--color-muted);
   font-size: 0.77rem;
@@ -846,6 +883,10 @@ h2 em {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .cuadricula-testimonios {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .impact-grid {
     grid-template-columns: 0.95fr 1.05fr;
     gap: 4rem;
@@ -888,6 +929,10 @@ h2 em {
 }
 
 @media (min-width: 58rem) {
+  .cuadricula-testimonios {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .hero-grid {
     grid-template-columns: 1.05fr 0.95fr;
     gap: 2rem;

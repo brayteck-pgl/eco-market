@@ -5,39 +5,39 @@ const PRODUCTS_URL = "./productos.json";
 const productImages = {
   1: "photo-1587049352851-8d4e89133924",
   2: "photo-1546094096-0df4bcaaa337",
-  3: "photo-1608248543803-ba4f8c70ae0b",
-  4: "photo-1586201375761-83865001e31c",
-  5: "",
+  3: "photo-1600857544200-b2f666a9a2ec",
+  4: "photo-1708436477916-f97964f3ccf1",
+  5: "photo-1676897296672-2bb21aacb342",
   6: "photo-1523049673857-eb18f1d7b578",
   7: "photo-1528825871115-3581a5387919",
   8: "photo-1576045057995-568f588f82fb",
   9: "photo-1518977676601-b53f82aba655",
   10: "photo-1464965911861-746a04b4bca6",
   11: "photo-1586201375761-83865001e31c",
-  12: "photo-1515543904379-3d757afe72e4",
+  12: "photo-1722882270052-e132567e9f70",
   13: "photo-1447933601403-0c6688de566e",
-  14: "photo-1589367920969-ab8e050bbb04",
+  14: "photo-1615110250484-e8c3b151b957",
   15: "photo-1606313564200-e75d5e30476c",
-  16: "photo-1517673132405-a56a62b18caf",
+  16: "photo-1645517976245-569a91016f79",
   17: "photo-1544787219-7f47ccb76574",
-  18: "photo-1608248543803-ba4f8c70ae0b",
-  19: "photo-1608248543803-ba4f8c70ae0b",
-  20: "photo-1608248543803-ba4f8c70ae0b",
-  21: "photo-1608248543803-ba4f8c70ae0b",
-  22: "photo-1608248543803-ba4f8c70ae0b",
-  23: "photo-1608571423902-eed4a5ad8108",
-  24: "photo-1600369671236-e74521d4b6ad",
-  25: "photo-1597481499750-3e6b22637e12",
-  26: "photo-1608248543803-ba4f8c70ae0b",
+  18: "photo-1618840313409-66c0d92d6f26",
+  19: "photo-1620916566398-39f1143ab7be",
+  20: "photo-1617992477191-bb534afd4921",
+  21: "photo-1584305574647-0cc949a2bb9f",
+  22: "photo-1608528577816-84a949c3f79d",
+  23: "photo-1703024211611-3fcac828b2ac",
+  24: "photo-1740760188069-ad88835726c5",
+  25: "photo-1630381260512-e3fe55c11973",
+  26: "photo-1590610994353-7b0e7546e681",
   27: "photo-1603006905003-be475563bc59",
-  28: "photo-1563453392212-326f5e854473",
-  29: "photo-1576045057995-568f588f82fb",
+  28: "photo-1748765968965-7e18d4f7192b",
+  29: "photo-1640958904159-51ae08bd3412",
   30: "photo-1547514701-42782101795e",
   31: "photo-1445282768818-728615cc910a",
-  32: "photo-1509440159596-0249088772ff",
+  32: "photo-1644753787071-8933b5daed2d",
   33: "photo-1474979266404-7eaacbcd87c5",
-  34: "",
-  35: "photo-1600369671236-e74521d4b6ad",
+  34: "photo-1691096673900-014e7ff94636",
+  35: "photo-1766727923634-39d57e8d7538",
 };
 
 const currency = new Intl.NumberFormat("es-CO", {
@@ -57,6 +57,8 @@ const sortControl = document.querySelector("#store-sort");
 const catalogStatus = document.querySelector("#store-feedback");
 const cartStatus = document.querySelector("#cart-feedback");
 const homeStatus = document.querySelector("#home-store-feedback");
+const formularioSuscripcion = document.querySelector("#formulario-suscripcion");
+const mensajeSuscripcion = document.querySelector("#mensaje-suscripcion");
 
 let products = [];
 let cart = [];
@@ -539,6 +541,26 @@ function finishDemoOrder() {
     setStatus(cartStatus, "Pedido de prueba confirmado. No se procesó un pago ni se modificó el inventario.");
     renderCart();
   }
+}
+
+if (formularioSuscripcion && mensajeSuscripcion) {
+  formularioSuscripcion.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!formularioSuscripcion.reportValidity()) {
+      mensajeSuscripcion.hidden = true;
+      return;
+    }
+
+    const datosFormulario = new FormData(formularioSuscripcion);
+    const nombre = String(datosFormulario.get("nombre") || "").trim();
+    const correo = String(datosFormulario.get("correo") || "").trim();
+
+    mensajeSuscripcion.textContent = `Gracias${nombre ? `, ${nombre}` : ""}. Te avisaremos en ${correo} cuando haya nuevas novedades de EcoMarket.`;
+    mensajeSuscripcion.classList.add("is-success");
+    mensajeSuscripcion.hidden = false;
+    formularioSuscripcion.reset();
+  });
 }
 
 catalogGrid?.addEventListener("click", handleStoreAction);
