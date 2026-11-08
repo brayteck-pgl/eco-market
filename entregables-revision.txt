@@ -1,4 +1,4 @@
-REVISION DE ENTREGABLES - TALLER ECOMARKET
+REVISION DE ENTREGABLES - TALLER PRACTICO 2 ECOMARKET
 Fecha de revision: 2026-11-08
 
 ENTREGABLES DEL PROYECTO
@@ -21,6 +21,17 @@ EVIDENCIAS SOLICITADAS POR EL TALLER
 - evidencias/03-dashboard-movil.png
 - evidencias/04-dashboard-filtros.png
 - evidencias/05-dashboard-modal.png
+- evidencias/proceso-landing-propuesta-implementacion.png: propuesta e
+  implementacion inicial de la landing.
+- evidencias/proceso-dataset-generacion.png: solicitud de creacion del dataset.
+- evidencias/proceso-dataset-validacion.png: revision de productos.json y del
+  resultado del validador.
+- evidencias/proceso-dashboard-solicitud-visual.png: solicitud visual inicial
+  del dashboard.
+- evidencias/proceso-dashboard-resultado-visual.png: dashboard implementado y
+  revision de sus componentes.
+- evidencias/proceso-dashboard-evolucion-catalogo.png: solicitud incremental
+  para evolucionar el dashboard y conectar el catalogo.
 - Captura del grafico: no aplica por ahora; el grafico es bonus y no esta implementado.
 
 VISTAS DE TIENDA
@@ -42,15 +53,14 @@ DOCUMENTACION DEL PROCESO CON IA
   y ajustes realizados a las respuestas de IA.
 - documentacion-proceso-ia.txt registra el proceso verificable, siete prompts
   reconstruidos como ejemplos metodologicos, las tecnicas propuestas, los
-  ajustes efectuados y respuestas tecnicas preliminares a las reflexiones.
+  ajustes efectuados y las reflexiones sobre los resultados del proyecto.
 - Los prompts son reconstrucciones retrospectivas, no transcripciones literales
   ni evidencia de que se usaron exactamente asi durante la creacion original.
 - El documento se actualizo el 2026-11-08 con los testimonios, la integracion
   del formulario en storefront.js, la nomenclatura en espanol solicitada y las
   pruebas del formulario.
-- Antes de entregar, el grupo debe agregar ejemplos de su experiencia a las
-  reflexiones y sustituir los prompts reconstruidos por los literales si los
-  conserva.
+- Los prompts reconstruidos se identifican como ejemplos metodologicos porque
+  no se conservaron las transcripciones originales.
 
 VERSIONES DEL DATASET
 - No se modifico productos.json durante la validacion; los 35 registros pasaron.
@@ -60,12 +70,15 @@ VERSIONES DEL DATASET
 
 REPOSITORIO
 - La carpeta de trabajo contiene metadatos de Git y commits locales.
-- La publicacion de los cambios pendientes en GitHub aun debe verificarse.
+- Los cambios de la iteracion anterior se publicaron en GitHub en el commit
+  fe2eea9. Las capturas del proceso y esta actualizacion documental estan
+  pendientes de publicacion.
 
 PENDIENTES PARA CERRAR LA ENTREGA
-1. Si se recuperan chats anteriores, reemplazar/complementar los ejemplos con
-   los prompts literales y anotar los cambios reales.
-2. Personalizar las respuestas de reflexion con la experiencia del grupo.
-3. Reemplazar los testimonios ficticios por opiniones reales autorizadas antes
-   de presentar el sitio como una tienda real.
-4. Verificar la version publicada en GitHub y subir los cambios finales.
+1. Publicar las capturas del proceso y las actualizaciones de documentacion.
+
+NOTAS DE PRESENTACION
+- Los testimonios de la landing se conservan como ejemplos ficticios y estan
+  identificados como tales en la pagina.
+- Los prompts reconstruidos se distinguen de transcripciones originales, que no
+  se conservaron.

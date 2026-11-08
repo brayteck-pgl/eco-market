@@ -1,4 +1,4 @@
-DOCUMENTACION DEL PROCESO CON IA - TALLER ECOMARKET
+DOCUMENTACION DEL PROCESO CON IA - TALLER PRACTICO 2 ECOMARKET
 Fecha de actualizacion: 2026-11-08
 
 1. ALCANCE Y LIMITACION DEL REGISTRO
@@ -182,44 +182,46 @@ originales.
   parametro de version en index.html, catalogo.html y carrito.html para que las
   tres paginas soliciten la version actual del archivo.
 
-5. BORRADOR DE RESPUESTAS PARA LAS PREGUNTAS DE REFLEXION
-
-Estas respuestas deben revisarse y personalizarse con la experiencia del grupo.
-Los puntos tecnicos siguientes resumen resultados comprobados del proyecto;
-agreguen ejemplos propios del proceso del grupo antes de entregar.
+5. REFLEXIONES
 
 1. Diferencias entre zero-shot, one-shot y few-shot:
-   Zero-shot solicita una tarea sin ejemplos; one-shot aporta un ejemplo; few-shot
-   aporta varios. En una generacion de productos, los ejemplos ayudan a mantener
-   la forma y los tipos del JSON, pero el resultado debe validarse con reglas de
-   JavaScript.
+   Zero-shot solicita una tarea sin ejemplos; one-shot aporta un ejemplo y
+   few-shot aporta varios. Para generar productos, los ejemplos ayudan a
+   conservar la estructura y los tipos del JSON. Aun asi, cada registro debe
+   comprobarse con reglas de validacion antes de incorporarlo al proyecto.
 
 2. Importancia de definir estructura y reglas antes de generar datos:
-   Permite que la IA conozca los nombres de campos, tipos, rangos y valores
-   permitidos. Esto reduce registros incompatibles con el formulario y evita
-   corregir inconsistencias de forma manual despues.
+   Definir los campos, tipos, rangos y valores permitidos antes de generar el
+   dataset permite evaluar los resultados con criterios concretos. En EcoMarket,
+   estas reglas incluyen categorias y ciudades permitidas, precios positivos,
+   existencias no negativas, fechas validas y nombres dentro del rango esperado.
+   Asi se detectan incompatibilidades antes de usar los datos en el dashboard.
 
 3. Errores detectados por la validacion:
-   En la ejecucion sobre los 35 productos no se encontraron errores de datos.
-   Al comparar el validador con las reglas del taller se detecto que faltaba
-   verificar la longitud de nombre y productor; se agrego esa regla y se probaron
-   valores dentro y fuera de los limites.
+   La validacion de los 35 productos no encontro errores en el dataset. Al
+   contrastar el validador con las reglas del taller, se detecto que faltaba
+   comprobar la longitud de nombre y productor. Se incorporo ese limite y se
+   probaron valores validos y no validos para verificar el resultado.
 
 4. Ventajas de separar datos, logica y presentacion:
-   productos.json contiene los datos, app.js implementa la interaccion y los
-   calculos, y los HTML/CSS presentan la interfaz. Esta separacion facilita
-   localizar errores y cambiar una parte sin rehacer las demas.
+   productos.json conserva los datos; app.js gestiona la interaccion del
+   dashboard y storefront.js la experiencia de la tienda; los archivos HTML y
+   styles.css estructuran y presentan las paginas. Esta separacion permite
+   revisar y cambiar una responsabilidad sin rehacer las demas.
 
 5. Limitaciones de localStorage frente a una base de datos:
-   localStorage solo persiste en el navegador y origen actuales; no sincroniza
-   entre usuarios o dispositivos, no ofrece respaldo centralizado ni control de
-   acceso y puede ser borrado por el usuario.
+   localStorage persiste los datos en el navegador y origen actuales, pero no
+   sincroniza cambios entre usuarios o dispositivos. Tampoco ofrece por si solo
+   respaldo centralizado, permisos ni garantias frente al borrado de los datos
+   locales. Por eso sirve para este prototipo, pero no reemplaza un backend con
+   una base de datos para una tienda en produccion.
 
 6. Cambios para produccion:
-   Se requeririan backend y base de datos compartida, autenticacion y permisos,
-   validacion tambien en el servidor, respaldo y monitoreo, y un servicio real
-   para suscripciones. Si se habilitan compras, tambien se integrarian inventario
-   transaccional, logistica y un proveedor de pagos seguro.
+   Se necesitarian un backend y una base de datos compartida, autenticacion y
+   permisos, validacion en el servidor, respaldos y monitoreo. La suscripcion
+   requeriria un servicio real. Para aceptar compras tambien harian falta
+   inventario transaccional, integracion logistica y un proveedor de pagos
+   seguro. El cierre de pedido actual es solo una simulacion local.
 
 6. EVIDENCIAS RELACIONADAS
 
@@ -231,3 +233,20 @@ agreguen ejemplos propios del proceso del grupo antes de entregar.
 - evidencias/03-dashboard-movil.png
 - evidencias/04-dashboard-filtros.png
 - evidencias/05-dashboard-modal.png
+- Capturas del proceso real de creacion, incorporadas sin alterar su contenido:
+  - evidencias/proceso-landing-propuesta-implementacion.png: propuesta de
+    diseno para la landing y vista de la landing implementada.
+  - evidencias/proceso-dataset-generacion.png: solicitud de los cinco registros
+    manuales y de la ampliacion del dataset con registros adicionales.
+  - evidencias/proceso-dataset-validacion.png: productos.json junto con la
+    revision del dataset y la comprobacion del validador.
+  - evidencias/proceso-dashboard-solicitud-visual.png: solicitud de la
+    estructura visual inicial del dashboard.
+  - evidencias/proceso-dashboard-resultado-visual.png: dashboard renderizado y
+    revision de la tabla, indicadores y vista responsive.
+  - evidencias/proceso-dashboard-evolucion-catalogo.png: revision del dashboard
+    existente y solicitud de cambios incrementales para conectar el catalogo.
+
+Las capturas documentan momentos visibles del proceso, pero no constituyen una
+transcripcion completa de todas las conversaciones ni necesariamente muestran
+cada cambio intermedio.
