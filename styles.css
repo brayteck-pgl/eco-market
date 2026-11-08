@@ -106,16 +106,27 @@ input {
 
 .brand-mark {
   display: grid;
-  width: 2rem;
+  width: 2.15rem;
   aspect-ratio: 1;
   place-items: center;
-  border-radius: 50% 50% 50% 0.35rem;
-  background: var(--color-leaf);
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 50% 50% 50% 0.55rem;
+  background: linear-gradient(145deg, #43875e, var(--color-forest));
+  box-shadow: 0 0.2rem 0.65rem rgb(31 58 45 / 22%), inset 0 1px rgb(255 255 255 / 22%);
   color: var(--color-white);
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 600;
   transform: rotate(-8deg);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.brand-mark svg {
+  width: 1.55rem;
+  height: 1.55rem;
+  color: var(--color-white);
+}
+
+.brand:hover .brand-mark {
+  box-shadow: 0 0.3rem 0.8rem rgb(31 58 45 / 28%), inset 0 1px rgb(255 255 255 / 22%);
+  transform: rotate(0) scale(1.06);
 }
 
 .brand-light {
